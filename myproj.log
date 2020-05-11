@@ -1,0 +1,68 @@
+2020-05-09 16:15:20-[ERROR TestContextManager.java:234]  Caught exception while allowing TestExecutionListener [org.springframework.test.context.support.DependencyInjectionTestExecutionListener@4b34fff9] to prepare test instance [com.qfedu.TestTbUserService@1187c9e8]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'com.qfedu.TestTbUserService': Injection of resource dependencies failed; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.qfedu.service.ISolrDataService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:321)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1264)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireBeanProperties(AbstractAutowireCapableBeanFactory.java:386)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.injectDependencies(DependencyInjectionTestExecutionListener.java:118)
+	at org.springframework.test.context.support.DependencyInjectionTestExecutionListener.prepareTestInstance(DependencyInjectionTestExecutionListener.java:83)
+	at org.springframework.test.context.TestContextManager.prepareTestInstance(TestContextManager.java:230)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.createTest(SpringJUnit4ClassRunner.java:228)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner$1.runReflectiveCall(SpringJUnit4ClassRunner.java:287)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.methodBlock(SpringJUnit4ClassRunner.java:289)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:247)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.runChild(SpringJUnit4ClassRunner.java:94)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.springframework.test.context.junit4.statements.RunBeforeTestClassCallbacks.evaluate(RunBeforeTestClassCallbacks.java:61)
+	at org.springframework.test.context.junit4.statements.RunAfterTestClassCallbacks.evaluate(RunAfterTestClassCallbacks.java:70)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.springframework.test.context.junit4.SpringJUnit4ClassRunner.run(SpringJUnit4ClassRunner.java:191)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:68)
+	at com.intellij.rt.execution.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:47)
+	at com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:242)
+	at com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:70)
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.qfedu.service.ISolrDataService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@javax.annotation.Resource(shareable=true, lookup=, name=, description=, authenticationType=CONTAINER, type=class java.lang.Object, mappedName=)}
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.raiseNoMatchingBeanFound(DefaultListableBeanFactory.java:1486)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1104)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1066)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.autowireResource(CommonAnnotationBeanPostProcessor.java:518)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.getResource(CommonAnnotationBeanPostProcessor.java:496)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor$ResourceElement.getResourceToInject(CommonAnnotationBeanPostProcessor.java:627)
+	at org.springframework.beans.factory.annotation.InjectionMetadata$InjectedElement.inject(InjectionMetadata.java:169)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:88)
+	at org.springframework.context.annotation.CommonAnnotationBeanPostProcessor.postProcessPropertyValues(CommonAnnotationBeanPostProcessor.java:318)
+	... 25 more
+2020-05-09 16:20:18-[DEBUG BaseJdbcLogger.java:159]  ==>  Preparing: select * from tb_item i,tb_item_cat c,tb_item_desc d where i.cid =c.id and i.id = d.item_id l00 
+2020-05-09 16:20:18-[DEBUG BaseJdbcLogger.java:159]  ==> Parameters: 
+2020-05-09 16:21:21-[DEBUG BaseJdbcLogger.java:159]  ==>  Preparing: select * from tb_item i,tb_item_cat c,tb_item_desc d where i.cid =c.id and i.id = d.item_id l00 
+2020-05-09 16:21:21-[DEBUG BaseJdbcLogger.java:159]  ==> Parameters: 
+2020-05-09 16:25:03-[DEBUG BaseJdbcLogger.java:159]  ==>  Preparing: select i.id, i.title, i.sell_point sellPoint, i.price, i.image, c.name catName, d.item_desc itemDesc from tb_item i,tb_item_cat c,tb_item_desc d where i.cid =c.id and i.id = d.item_id l00 
+2020-05-09 16:25:03-[DEBUG BaseJdbcLogger.java:159]  ==> Parameters: 
+2020-05-09 16:27:40-[DEBUG BaseJdbcLogger.java:159]  ==>  Preparing: select i.id, i.title, i.sell_point sellPoint, i.price, i.image, c.name catName, d.item_desc itemDesc from tb_item i,tb_item_cat c,tb_item_desc d where i.cid =c.id and i.id = d.item_id limit l00 
+2020-05-09 16:27:40-[DEBUG BaseJdbcLogger.java:159]  ==> Parameters: 
+2020-05-09 16:28:21-[DEBUG BaseJdbcLogger.java:159]  ==>  Preparing: select i.id, i.title, i.sell_point sellPoint, i.price, i.image, c.name catName, d.item_desc itemDesc from tb_item i,tb_item_cat c,tb_item_desc d where i.cid =c.id and i.id = d.item_id 
+2020-05-09 16:28:21-[DEBUG BaseJdbcLogger.java:159]  ==> Parameters: 
+2020-05-09 16:28:23-[DEBUG BaseJdbcLogger.java:159]  <==      Total: 3099
+2020-05-09 19:58:43-[DEBUG BaseJdbcLogger.java:159]  ==>  Preparing: select i.id, i.title, i.sell_point sellPoint, i.price, i.image, c.name catName, d.item_desc itemDesc from tb_item i,tb_item_cat c,tb_item_desc d where i.cid =c.id and i.id = d.item_id 
+2020-05-09 19:58:43-[DEBUG BaseJdbcLogger.java:159]  ==> Parameters: 
+2020-05-09 19:58:45-[DEBUG BaseJdbcLogger.java:159]  <==      Total: 3099
+2020-05-09 19:58:53-[DEBUG BaseJdbcLogger.java:159]  ==>  Preparing: select i.id, i.title, i.sell_point sellPoint, i.price, i.image, c.name catName, d.item_desc itemDesc from tb_item i,tb_item_cat c,tb_item_desc d where i.cid =c.id and i.id = d.item_id 
+2020-05-09 19:58:53-[DEBUG BaseJdbcLogger.java:159]  ==> Parameters: 
+2020-05-09 19:58:54-[DEBUG BaseJdbcLogger.java:159]  <==      Total: 3099
+2020-05-09 20:46:33-[DEBUG BaseJdbcLogger.java:159]  ==>  Preparing: select i.id, i.title, i.sell_point sellPoint, i.price, i.image, c.name catName, d.item_desc itemDesc from tb_item i,tb_item_cat c,tb_item_desc d where i.cid =c.id and i.id = d.item_id 
+2020-05-09 20:46:33-[DEBUG BaseJdbcLogger.java:159]  ==> Parameters: 
+2020-05-09 20:46:35-[DEBUG BaseJdbcLogger.java:159]  <==      Total: 3099
+2020-05-09 21:11:31-[DEBUG BaseJdbcLogger.java:159]  ==>  Preparing: select i.id, i.title, i.sell_point sellPoint, i.price, i.image, c.name catName, d.item_desc itemDesc from tb_item i,tb_item_cat c,tb_item_desc d where i.cid =c.id and i.id = d.item_id 
+2020-05-09 21:11:32-[DEBUG BaseJdbcLogger.java:159]  ==> Parameters: 
+2020-05-09 21:11:33-[DEBUG BaseJdbcLogger.java:159]  <==      Total: 3099
+2020-05-09 21:26:33-[DEBUG BaseJdbcLogger.java:159]  ==>  Preparing: select i.id, i.title, i.sell_point sellPoint, i.price, i.image, c.name catName, d.item_desc itemDesc from tb_item i,tb_item_cat c,tb_item_desc d where i.cid =c.id and i.id = d.item_id 
+2020-05-09 21:26:33-[DEBUG BaseJdbcLogger.java:159]  ==> Parameters: 
+2020-05-09 21:26:34-[DEBUG BaseJdbcLogger.java:159]  <==      Total: 3099
+2020-05-09 21:34:49-[DEBUG BaseJdbcLogger.java:159]  ==>  Preparing: select i.id, i.title, i.sell_point sellPoint, i.price, i.image, c.name catName, d.item_desc itemDesc from tb_item i,tb_item_cat c,tb_item_desc d where i.cid =c.id and i.id = d.item_id 
+2020-05-09 21:34:50-[DEBUG BaseJdbcLogger.java:159]  ==> Parameters: 
+2020-05-09 21:34:51-[DEBUG BaseJdbcLogger.java:159]  <==      Total: 3099

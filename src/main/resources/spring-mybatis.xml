@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+    <!-- 引入数据库配置信息文件 -->
+    <context:property-placeholder location="classpath:db.properties" />
+
+    <context:component-scan base-package="com.qfedu.service" />
+
+    <!-- 配置druid数据源 -->
+    <bean id="ds" class="com.alibaba.druid.pool.DruidDataSource">
+        <!--<property name="url" value="jdbc:mysql://localhost:3306/hello2"></property>-->
+        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
+        <!--<property name="username" value="root" />-->
+        <!--<property name="password" value="123456" />-->
+        <property name="url" value="${url}"></property>
+        <property name="driverClassName" value="${driver}" />
+        <property name="username" value="${aaaa}" />
+        <property name="password" value="${bbbb}" />
+    </bean>
+
+    <bean id="sf" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="typeAliasesPackage" value="com.qfedu.entity" />
+        <property name="mapperLocations" value="classpath:com/qfedu/mapper/*Dao.xml" />
+        <property name="dataSource" ref="ds"></property>
+        <property name="configLocation" value="classpath:mybatis-config.xml" />
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.qfedu.dao" />
+        <property name="sqlSessionFactoryBeanName" value="sf" />
+    </bean>
+
+    <!-- 配置事务管理器 -->
+    <bean id="dtx" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="ds"></property>
+    </bean>
+
+    <tx:advice id="tx" transaction-manager="dtx">
+        <!-- 声明属性，声明事务的规则 -->
+        <tx:attributes>
+            <tx:method name="save*" propagation="REQUIRED" isolation="DEFAULT" rollback-for="Exception" />
+            <tx:method name="insert*" propagation="REQUIRED" isolation="DEFAULT" rollback-for="Exception" />
+            <tx:method name="update*" propagation="REQUIRED" isolation="DEFAULT" rollback-for="Exception" />
+            <tx:method name="delete*" propagation="REQUIRED" isolation="DEFAULT" rollback-for="Exception" />
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 定义切面 -->
+    <aop:config>
+        <aop:pointcut id="mpt" expression="execution(* com.qfedu.service.*.*(..))" />
+        <aop:advisor advice-ref="tx" pointcut-ref="mpt" />
+    </aop:config>
+</beans>

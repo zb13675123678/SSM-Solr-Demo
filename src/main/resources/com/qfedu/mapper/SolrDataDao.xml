@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qfedu.dao.SolrDataDao">
+
+    <select id="getAllData"  resultType="solrData">
+        select i.id, i.title, i.sell_point sellPoint, i.price, i.image, c.name catName, d.item_desc itemDesc
+            from tb_item i,tb_item_cat c,tb_item_desc d
+            where i.cid =c.id  and  i.id = d.item_id
+    </select>
+
+</mapper>
